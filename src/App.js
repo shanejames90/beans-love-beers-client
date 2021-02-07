@@ -6,13 +6,15 @@ import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
 import SignIn from './components/SignIn/SignIn'
 import SearchBar from './components/SearchBar/SearchBar'
+import HomePage from './components/HomePage/HomePage'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      beers: []
     }
   }
 
@@ -55,7 +57,10 @@ class App extends Component {
           )} />
         </main>
         <Route path='/' render={() => (
-          <SearchBar />
+          <SearchBar/>
+        )} />
+        <Route path='/' render={() => (
+          <HomePage/>
         )} />
       </Fragment>
     )

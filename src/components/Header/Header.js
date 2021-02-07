@@ -10,9 +10,9 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="secondary" variant="dark" expand="md" style={{ marginTop: '5px', height: '55px' }}>
     <Navbar.Brand href="#">
-      <h1>Beans Love Beers</h1>
+      <p style={{ fontFamily: 'avenir', fontSize: '33px', fontWeight: 'lighter', paddingTop: '10px' }}>Beans Love Beers</p>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

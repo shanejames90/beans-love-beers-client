@@ -38,6 +38,7 @@ class SearchBar extends Component {
     axios.get(`${apiUrl}${this.state.beerName}`)
       // .then(res => console.log(res))
       .then(res => this.setState({ id: res.data[0].id, image: res.data[0].image_url, officialName: res.data[0].name, description: res.data[0].description }))
+      .then(this.setState({ beerName: '' }))
       .catch(console.error)
   }
 
@@ -49,11 +50,11 @@ class SearchBar extends Component {
     } else {
       beerDisplay = (
         <div>
-          <Container style={{ marginLeft: '30%', marginRight: '30%', marginTop: '15px' }}>
+          <Container className="contentBox" style={{ display: 'flex', flex: '1', alignItems: 'center', marginLeft: '30%', marginRight: '30%', marginTop: '15px' }}>
             <Card style={{ width: '22rem', height: '14rem', align: 'center', borderRadius: '5px', boxShadow: '0px 2px 0px 0px rgba(0, 0, 0, 0.1)' }}>
               <Row style={{ marginLeft: '305px', marginTop: '10px' }}>
                 <Col>
-                  <p><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" className="bi bi-star" viewBox="0 0 16 16">
+                  <p><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#46dcc6" className="bi bi-star" viewBox="0 0 16 16">
                     <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                   </svg></p>
                 </Col>
@@ -62,9 +63,9 @@ class SearchBar extends Component {
                 <Col xs={6} md={4} lg={6} xl={14}>
                   <Image src={image} thumbnail style={{ height: '193px', width: '70px', border: 'none', paddingTop: '60px', paddingBottom: '40px', paddingLeft: '20px' }}/>
                 </Col>
-                <Col xs={6} md={4} lg={6} xl={14} style={{ paddingTop: '43px' }}>
+                <Col xs={6} md={4} lg={6} xl={14} style={{ paddingTop: '43px', paddingBottom: '5px' }}>
                   <Card.Body style={{ marignRight: '50px' }}>
-                    <Card.Text style={{ width: '12rem' }}>
+                    <Card.Text style={{ width: '12rem', position: '' }}>
                       <h6 style={{ fontWeight: 'bold', marginBottom: '0px' }}>{officialName}</h6>
                       <p>{description}..</p>
                     </Card.Text>
@@ -79,16 +80,17 @@ class SearchBar extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.handleSubmit} style={{ width: '53vw', marginTop: '4%', marginLeft: '23%', marginRight: '23%' }}>
+        <Form onSubmit={this.handleSubmit} style={{ width: '43rem', marginTop: '4%', marginLeft: '21%', marginRight: '21%' }}>
           <InputGroup>
             <FormControl
               name="search"
               value={beerName}
               placeholder="Search for beer..."
               onChange={this.handleInputChange}
+              style={{ boxShadow: 'inset 0px 0px 2px 0px rgba(0,0,0,0.3)', height: '3rem' }}
             />
             <InputGroup.Append>
-              <Button type="submit" variant="outline-secondary">Search</Button>
+              <Button type="submit" variant="primary">Search</Button>
             </InputGroup.Append>
           </InputGroup>
         </Form>
